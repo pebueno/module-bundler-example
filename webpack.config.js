@@ -1,9 +1,8 @@
 const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     entry: './src/index.js',
-    // 
     /*
     Code Splitting
     entry: {
@@ -11,8 +10,6 @@ module.exports = {
         bar: 'bar.js',
     }
     */
-    /**/
-    /**/
     output: {
         filename: 'awesome.js',
         path: path.resolve(__dirname, 'dist'),
@@ -30,14 +27,18 @@ module.exports = {
             },
         ],
     },
+
     // PLUGINS: tap into the bundler lifecycle
     plugins: [
-        new BundleAnalyzerPlugin(),
+        new BundleAnalyzerPlugin()
     ],
+
     // DEV SERVER: watch and serve my files
     devServer: {
-        publicPath: '/dist',
-        contentBase: path.join(__dirname, 'public'),
+        // publicPath: '/dist',
+        static: {
+            directory: path.join(__dirname, 'public'),
+        },
         port: 9000
     },
 };
