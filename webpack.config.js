@@ -1,4 +1,5 @@
 const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
 
 module.exports = {
     entry: './src/index.js',
@@ -16,7 +17,7 @@ module.exports = {
         filename: 'awesome.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    module: {
+    module: { 
         // RULES: match files to loaders
         rules: [
             {
@@ -28,5 +29,15 @@ module.exports = {
                 ],
             },
         ],
+    },
+    // PLUGINS: tap into the bundler lifecycle
+    plugins: [
+        new BundleAnalyzerPlugin(),
+    ],
+    // DEV SERVER: watch and serve my files
+    devServer: {
+        publicPath: '/dist',
+        contentBase: path.join(__dirname, 'public'),
+        port: 9000
     },
 };
