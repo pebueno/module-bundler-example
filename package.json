@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/pebueno/module-bundler-example/issues"
   },
-  "homepage": "https://github.com/pebueno/module-bundler-example#readme"
+  "homepage": "https://github.com/pebueno/module-bundler-example#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
